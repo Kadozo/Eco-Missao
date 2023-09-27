@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhuktdtowlln8"]
+
+[ext_resource type="Texture2D" uid="uid://bvm4dwb8e0yav" path="res://assets/Menu/EcoMissão - Game Menu.png" id="1_vsgqh"]
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="2_ipe4k"]
+[ext_resource type="PackedScene" uid="uid://bp2bkyurbfu1x" path="res://prefabs/back_button.tscn" id="3_pbexc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqftb"]
+font = ExtResource("2_ipe4k")
+font_size = 32
+font_color = Color(0.222656, 0.707031, 0.289063, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ii0tl"]
+font = ExtResource("2_ipe4k")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_dur8a"]
+font = ExtResource("2_ipe4k")
+font_size = 32
+
+[node name="Controls_screen" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 748.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.620898, 0.616855)
+texture = ExtResource("1_vsgqh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(575, 327)
+scale = Vector2(5, 5)
+amount = 500
+speed_scale = 0.35
+explosiveness = 0.32
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 0)
+angle_max = 720.0
+color = Color(0.92549, 0.964706, 0.756863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 500)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -382.0
+offset_top = -324.0
+offset_right = -22.0
+offset_bottom = 176.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game_name" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Eco-"
+label_settings = SubResource("LabelSettings_jqftb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game_name2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Missão"
+label_settings = SubResource("LabelSettings_ii0tl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "-------- Controles --------"
+label_settings = SubResource("LabelSettings_ii0tl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Controls_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mover: A/D
+Ação: F
+Pular: Espaço
+"
+label_settings = SubResource("LabelSettings_dur8a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back_button" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_pbexc")]
+layout_mode = 2
+path = "res://prefabs/menu.tscn"

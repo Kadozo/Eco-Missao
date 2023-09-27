@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7uda4xb4q3lq"]
+
+[ext_resource type="PackedScene" uid="uid://brqyonlckmj37" path="res://prefabs/dialogbox.tscn" id="1_7605s"]
+[ext_resource type="Script" path="res://scripts/prólogo.gd" id="1_lugv4"]
+
+[node name="Prólogo" type="CanvasLayer"]
+script = ExtResource("1_lugv4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogbox" parent="." instance=ExtResource("1_7605s")]
+msg_queue = Array[String](["O mundo está em colapso e cabe a você ajudá-lo"])

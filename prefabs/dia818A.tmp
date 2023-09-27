@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://brqyonlckmj37"]
+
+[ext_resource type="Texture2D" uid="uid://du3w1fafhvn21" path="res://assets/Text Box/text_box.png" id="1_ff7ey"]
+[ext_resource type="Script" path="res://prefabs/dialogbox.gd" id="2_gq5qe"]
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="2_uism7"]
+[ext_resource type="AudioStream" uid="uid://cr3xyymud0c0o" path="res://sounds/Text 1.wav" id="4_4th4l"]
+
+[node name="Dialogbox" type="NinePatchRect"]
+custom_minimum_size = Vector2(0, 48)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -99.0
+offset_right = -51.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.9935)
+texture = ExtResource("1_ff7ey")
+region_rect = Rect2(7, 5, 49, 52)
+patch_margin_left = 9
+patch_margin_top = 2
+patch_margin_right = 9
+patch_margin_bottom = 9
+script = ExtResource("2_gq5qe")
+msg_queue = Array[String](["Teste", "Testando novamente", "testetestetestetestetestetestetes TESTEetestetestetestetestetestetestetestetes TESTEetestetestetestetestetestetestetestetes TESTEeteste testetestetestetestetestetestetes TESTEeteste testetestetestetestetestetestetes TESTEeteste testetestetestetestetestetestetes TESTEeteste TESTEeteste"])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="RichTextLabel" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_uism7")
+theme_override_font_sizes/normal_font_size = 16
+text = "
+"
+scroll_following = true
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.007
+
+[node name="textFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4th4l")
+
+[node name="textTimer" type="Timer" parent="."]
+wait_time = 0.03
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="textTimer" to="." method="_on_text_timer_timeout"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://jacupcljubt3"]
+
+[ext_resource type="Script" path="res://scripts/objective_popup.gd" id="1_m2hnw"]
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="2_75416"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l7cbq"]
+font = ExtResource("2_75416")
+
+[node name="objective_popup" type="CanvasLayer"]
+script = ExtResource("1_m2hnw")
+text = "Testando label"
+button_text = "Testando butão"
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.355
+anchor_top = 0.114
+anchor_right = 0.68
+anchor_bottom = 0.373
+offset_left = 0.0400085
+offset_top = 0.127998
+offset_right = -0.359985
+offset_bottom = 0.29599
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.692
+anchor_top = 0.735
+anchor_right = 0.974
+anchor_bottom = 0.956
+offset_left = 0.139984
+offset_top = -0.110001
+offset_right = -0.170013
+offset_bottom = -0.0559998
+theme_override_fonts/font = ExtResource("2_75416")
+theme_override_font_sizes/font_size = 16
+text = "Entendi!"
+icon_alignment = 1
+
+[node name="text_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.071
+anchor_right = 0.954
+anchor_bottom = 0.655
+offset_left = -0.200001
+offset_top = -0.0460014
+offset_right = -0.0700378
+offset_bottom = -0.030014
+label_settings = SubResource("LabelSettings_l7cbq")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

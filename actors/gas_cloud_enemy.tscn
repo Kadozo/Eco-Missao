@@ -1,0 +1,128 @@
+[gd_scene load_steps=16 format=3 uid="uid://conrt7yro1j3x"]
+
+[ext_resource type="Texture2D" uid="uid://dtj0tp4npruu8" path="res://assets/Gas Cloud Enemy/Running (32 x 32).png" id="1_4mp8j"]
+[ext_resource type="Script" path="res://scripts/gas_cloud_enemy.gd" id="1_f37u3"]
+[ext_resource type="Texture2D" uid="uid://bw0pbvive2a2a" path="res://assets/Gas Cloud Enemy/Hurt (32 x 32).png" id="2_a1fe7"]
+[ext_resource type="PackedScene" uid="uid://lp05r3jo2msx" path="res://prefabs/hitbox.tscn" id="3_sew14"]
+[ext_resource type="AudioStream" uid="uid://c8303ol6t0p1t" path="res://sounds/hit_005.wav" id="5_72twq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4tbt"]
+atlas = ExtResource("2_a1fe7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjmh8"]
+atlas = ExtResource("1_4mp8j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvrqc"]
+atlas = ExtResource("1_4mp8j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqfx4"]
+atlas = ExtResource("1_4mp8j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x04fa"]
+atlas = ExtResource("1_4mp8j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3128"]
+atlas = ExtResource("1_4mp8j")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hm7n"]
+atlas = ExtResource("1_4mp8j")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjipy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4tbt")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjmh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvrqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqfx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x04fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3128")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hm7n")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi2uq"]
+size = Vector2(14, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jstip"]
+size = Vector2(14, 36)
+
+[node name="Gas_cloud_enemy" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(0, -18)
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_f37u3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_sjipy")
+animation = &"hurt"
+autoplay = "run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bi2uq")
+
+[node name="collision_detector" type="RayCast2D" parent="."]
+position = Vector2(-1, 11)
+target_position = Vector2(-24, 0)
+collision_mask = 22
+collide_with_areas = true
+
+[node name="collision_detector2" type="RayCast2D" parent="."]
+position = Vector2(-1, 2)
+target_position = Vector2(-24, 0)
+collision_mask = 22
+collide_with_areas = true
+
+[node name="collision_detector3" type="RayCast2D" parent="."]
+position = Vector2(-1, -7)
+target_position = Vector2(-24, 0)
+collision_mask = 22
+collide_with_areas = true
+
+[node name="collision_detector4" type="RayCast2D" parent="."]
+position = Vector2(-1, -14)
+target_position = Vector2(-24, 0)
+collision_mask = 22
+collide_with_areas = true
+
+[node name="hitbox" parent="." instance=ExtResource("3_sew14")]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_jstip")
+debug_color = Color(0.639216, 0.521569, 0.196078, 0.419608)
+
+[node name="hitFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_72twq")
+volume_db = -10.0
+pitch_scale = 2.55
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg4yyxtsb3tcr"]
+
+[ext_resource type="PackedScene" uid="uid://brqyonlckmj37" path="res://prefabs/dialogbox.tscn" id="1_06pnx"]
+[ext_resource type="Script" path="res://scripts/contextualização_1_2.gd" id="1_kbeqp"]
+
+[node name="Contextualização1_2" type="CanvasLayer"]
+script = ExtResource("1_kbeqp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogbox" parent="." instance=ExtResource("1_06pnx")]
+msg_queue = Array[String]([" As árvores são excelentes absorvedoras de dióxido de carbono, um dos principais gases de efeito estufa responsáveis pelo aquecimento global. Elas capturam CO2 da atmosfera durante o processo de fotossíntese. Isso ajuda a reduzir a concentração de CO2 na atmosfera, diminuindo o efeito estufa e, consequentemente, o aquecimento global", "Por isso plantar mais árvores no planeta é tão importante, elas são essenciais para nossa sobrevivência nesse mundo ", "Existe uma concentração muito grande de CO2 no nosso mundo atualmente, ajude-nos a elimar as nuvens de CO2 plantando arvores", "MÃOS À OBRA!!!"])

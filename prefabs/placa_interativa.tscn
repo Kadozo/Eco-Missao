@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8t42xgftfvlk"]
+
+[ext_resource type="Script" path="res://scripts/placa_interativa.gd" id="1_hwy5k"]
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="2_0ss0q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0nrpt"]
+font = ExtResource("2_0ss0q")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_iph0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5apxp"]
+size = Vector2(70, 17)
+
+[node name="placa_interativa" type="Node2D"]
+script = ExtResource("1_hwy5k")
+
+[node name="text_label" type="Label" parent="."]
+offset_left = -71.0
+offset_top = -56.0
+offset_right = 71.0
+offset_bottom = -32.0
+label_settings = SubResource("LabelSettings_0nrpt")
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="text_label"]
+modulate = Color(0, 0, 0, 0.356863)
+show_behind_parent = true
+position = Vector2(70.2618, 8.68237)
+rotation = -3.14159
+scale = Vector2(149.423, -32.0406)
+texture = SubResource("CanvasTexture_iph0n")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_5apxp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

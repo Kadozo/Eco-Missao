@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddejfupxly7al"]
+
+[ext_resource type="Script" path="res://scripts/lixeira.gd" id="1_0hrrp"]
+[ext_resource type="Texture2D" uid="uid://c11xuj4u35k52" path="res://assets/Trash cans/lixeiras.png" id="1_guqqt"]
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="3_3mjs6"]
+[ext_resource type="AudioStream" uid="uid://c32blell6fwfj" path="res://sounds/confirmation_002.ogg" id="4_oyuca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em8nw"]
+size = Vector2(24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em50d"]
+atlas = ExtResource("1_guqqt")
+region = Rect2(47, 0, 47, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivsom"]
+atlas = ExtResource("1_guqqt")
+region = Rect2(141, 0, 47, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55f1g"]
+atlas = ExtResource("1_guqqt")
+region = Rect2(94, 0, 47, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vhgs"]
+atlas = ExtResource("1_guqqt")
+region = Rect2(0, 0, 47, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aglhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em50d")
+}],
+"loop": true,
+"name": &"lixeira_metal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivsom")
+}],
+"loop": true,
+"name": &"lixeira_papel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55f1g")
+}],
+"loop": true,
+"name": &"lixeira_plastico",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vhgs")
+}],
+"loop": true,
+"name": &"lixeira_vidro",
+"speed": 5.0
+}]
+
+[node name="Lixeira" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_0hrrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_em8nw")
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_aglhw")
+animation = &"lixeira_metal"
+autoplay = "lixeira_metal"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -61.0
+offset_top = -53.0
+offset_right = 63.0
+offset_bottom = -13.0
+
+[node name="Legenda" type="Label" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 125.0
+offset_bottom = 40.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_3mjs6")
+theme_override_font_sizes/font_size = 16
+text = "teste"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="confirmFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oyuca")
+volume_db = -10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhng7tkgfd6cv"]
+
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="1_yw8py"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="2_raogn"]
+[ext_resource type="Script" path="res://scripts/recursos.gd" id="3_16yfl"]
+[ext_resource type="Texture2D" path="res://assets/recycle_items.png" id="3_718bt"]
+[ext_resource type="Script" path="res://scripts/countdown.gd" id="4_5rxvo"]
+[ext_resource type="Script" path="res://scripts/Game_over.gd" id="5_m6tyf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_egxhu"]
+font = ExtResource("1_yw8py")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ygr1"]
+font = ExtResource("1_yw8py")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17ufp"]
+font = ExtResource("1_yw8py")
+font_size = 64
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ptav3"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Holder-Score" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label Score" type="Label" parent="Holder-Score"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 31.0
+offset_right = 122.0
+offset_bottom = 66.0
+text = "Score: "
+label_settings = SubResource("LabelSettings_egxhu")
+
+[node name="score" type="Label" parent="Holder-Score"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 32.0
+offset_right = 225.0
+offset_bottom = 67.0
+text = "0"
+label_settings = SubResource("LabelSettings_egxhu")
+script = ExtResource("2_raogn")
+
+[node name="Holder-item_segurado" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Plastico" type="Sprite2D" parent="Holder-item_segurado"]
+position = Vector2(77.6126, 110.808)
+scale = Vector2(2, 2)
+texture = ExtResource("3_718bt")
+region_enabled = true
+region_rect = Rect2(0, 16, 19, 48)
+script = ExtResource("3_16yfl")
+
+[node name="Papel" type="Sprite2D" parent="Holder-item_segurado"]
+position = Vector2(77.6126, 110.808)
+scale = Vector2(2, 2)
+texture = ExtResource("3_718bt")
+region_enabled = true
+region_rect = Rect2(97, 10, 53, 53)
+script = ExtResource("3_16yfl")
+type = 2
+
+[node name="Metal" type="Sprite2D" parent="Holder-item_segurado"]
+position = Vector2(77.6126, 110.808)
+scale = Vector2(2, 2)
+texture = ExtResource("3_718bt")
+region_enabled = true
+region_rect = Rect2(328, 21, 25, 43)
+script = ExtResource("3_16yfl")
+type = 3
+
+[node name="Vidro" type="Sprite2D" parent="Holder-item_segurado"]
+position = Vector2(77.6126, 110.808)
+scale = Vector2(2, 2)
+texture = ExtResource("3_718bt")
+region_enabled = true
+region_rect = Rect2(242, 10, 20, 53)
+script = ExtResource("3_16yfl")
+type = 4
+
+[node name="Holder-Contagem_Regressiva" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Holder-Contagem_Regressiva"]
+layout_mode = 0
+offset_left = 1055.0
+offset_top = 31.0
+offset_right = 1105.0
+offset_bottom = 66.0
+text = "120"
+label_settings = SubResource("LabelSettings_2ygr1")
+script = ExtResource("4_5rxvo")
+
+[node name="Game_over" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_m6tyf")
+
+[node name="game_over" type="Label" parent="Game_over"]
+offset_left = 328.0
+offset_top = 306.0
+offset_right = 824.0
+offset_bottom = 373.0
+text = "VOCE MORREU"
+label_settings = SubResource("LabelSettings_17ufp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Game_over"]
+modulate = Color(0, 0, 0, 0.494118)
+show_behind_parent = true
+position = Vector2(576.5, 324.75)
+scale = Vector2(1149, 110.5)
+texture = SubResource("CanvasTexture_ptav3")
+region_rect = Rect2(0, 0, 50, 0)

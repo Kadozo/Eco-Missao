@@ -1,0 +1,168 @@
+[gd_scene load_steps=8 format=3 uid="uid://us4pvx574ik2"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_5da0o"]
+[ext_resource type="Texture2D" uid="uid://bvm4dwb8e0yav" path="res://assets/Menu/EcoMissão - Game Menu.png" id="1_jlm05"]
+[ext_resource type="FontFile" uid="uid://chs3mplad2uu4" path="res://fonts/Minecraft.ttf" id="2_43005"]
+[ext_resource type="AudioStream" uid="uid://dtvtfdhscr1wd" path="res://sounds/button_click.ogg" id="4_ice1w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq8vb"]
+font = ExtResource("2_43005")
+font_size = 48
+font_color = Color(0.223529, 0.705882, 0.290196, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_di5hu"]
+font = ExtResource("2_43005")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_4cbqm"]
+font = ExtResource("2_43005")
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_5da0o")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 748.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.620898, 0.616855)
+texture = ExtResource("1_jlm05")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(575, 327)
+scale = Vector2(5, 5)
+amount = 500
+speed_scale = 0.35
+explosiveness = 0.32
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 0)
+angle_max = 720.0
+color = Color(0.92549, 0.964706, 0.756863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 500)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_bottom = 250.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game_name" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Eco-"
+label_settings = SubResource("LabelSettings_gq8vb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game_name2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Missão"
+label_settings = SubResource("LabelSettings_di5hu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Play_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.0941176, 0.333333, 0.784314, 1)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.203922, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_43005")
+theme_override_font_sizes/font_size = 32
+text = "Jogar"
+flat = true
+
+[node name="controls_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.09375, 0.332031, 0.785156, 1)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.203922, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_43005")
+theme_override_font_sizes/font_size = 32
+text = "Controles"
+flat = true
+
+[node name="credits_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.09375, 0.332031, 0.785156, 1)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.203922, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_43005")
+theme_override_font_sizes/font_size = 32
+text = "Créditos "
+flat = true
+
+[node name="quit_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.09375, 0.332031, 0.785156, 1)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.203922, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_43005")
+theme_override_font_sizes/font_size = 32
+text = "Sair"
+flat = true
+
+[node name="MadeBy" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 48)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MadeBy"]
+layout_mode = 2
+text = "Feito por"
+label_settings = SubResource("LabelSettings_4cbqm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MadeBy_button" type="Button" parent="MadeBy" groups=["buttons"]]
+modulate = Color(0.105469, 0.382813, 0.902344, 1)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.0392157, 0.203922, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_43005")
+text = "Thiago Cardozo"
+flat = true
+
+[node name="buttonFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ice1w")
+volume_db = -5.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/controls_button" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MadeBy/MadeBy_button" to="." method="_on_made_by_button_pressed"]

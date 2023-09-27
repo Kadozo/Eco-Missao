@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://eanx01k0todo"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_ebecy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mykie"]
+size = Vector2(23, 13.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tm85"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_152oi"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_womhh"]
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0ovu"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j001q"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xj7t"]
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfiox"]
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfavj"]
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldjhq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tm85")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_152oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_womhh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0ovu")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j001q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xj7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfiox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfavj")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_ebecy")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_mykie")
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(173, 1)
+zoom = Vector2(2.5, 2.5)
+limit_left = -14
+limit_top = -500
+limit_right = 8000
+limit_bottom = 650
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+editor_draw_limits = true
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_ldjhq")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.00933835
+
+[node name="animator" type="AnimationPlayer" parent="."]

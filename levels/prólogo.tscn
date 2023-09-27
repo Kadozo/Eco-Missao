@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7uda4xb4q3lq"]
+
+[ext_resource type="PackedScene" uid="uid://brqyonlckmj37" path="res://prefabs/dialogbox.tscn" id="1_7605s"]
+[ext_resource type="Script" path="res://scripts/prólogo.gd" id="1_lugv4"]
+
+[node name="Prólogo" type="CanvasLayer"]
+script = ExtResource("1_lugv4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogbox" parent="." instance=ExtResource("1_7605s")]
+msg_queue = Array[String](["Num mundo em constante transformação, uma sombra crescente paira sobre a humanidade. Uma ameaça invisível, porém poderosa, se insinua silenciosamente em nossas vidas cotidianas, perturbando o delicado equilíbrio da Terra...", "Esta ameaça é o aquecimento global, um fenômeno que tem se revelado como o desafio supremo do nosso tempo...", "Ação humana é o principal motivo do por quê esse Mal está cada vez maior. Nós, os humanos, movidos por nossa sede insaciável por energia, pela exploração desenfreada dos recursos naturais e por um estilo de vida movido a combustíveis fósseis, inadvertidamente desencadeamos uma mudança climática de proporções globais...", "Então cabe a nós acabar com esse mal, existe ações que podemos tomar para evitar que o Aquecimento Global continue crescendo...", "Uma das ações que podem ser tomadas, é a coleta seletiva de lixo. Reciclar materiais minimiza a emissão de C02, o principal composto responsável pelo Aquecimento Global, e reduz os impactos ambientais relacionados à extração de recursos naturais utilizados para a fabricação de novos produtos...", "Nossa cidade está cheia de lixo, nos ajude a retirar todo o lixo dela jogando cada tipo de lixo na sua respectiva lixeira...", "MÃOS A OBRA!!!"])
