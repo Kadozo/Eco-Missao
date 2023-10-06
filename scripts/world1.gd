@@ -29,7 +29,7 @@ func _process(delta):
 			$Reset_Timer.start(0)
 			$bgMusic.stop()
 			player.player_is_dead = true
-	if Global.items_received >= 1 and !finish_level:
+	if Global.items_received >= 20 and !finish_level:
 		finish_level = true
 		Global.timer_aux = Global.timer + 40
 		Global.level = 2

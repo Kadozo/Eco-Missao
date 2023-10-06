@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhng7tkgfd6cv"]
+[gd_scene load_steps=25 format=3 uid="uid://bhng7tkgfd6cv"]
 
 [ext_resource type="Script" path="res://scripts/Holder-heath.gd" id="1_3kwfw"]
 [ext_resource type="Texture2D" uid="uid://c1e8o8y6eyx37" path="res://assets/Mini FX, Items & UI/Mini UI/Health_Indicator_Black_Outline (8 x 8).png" id="1_ma67k"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cb8x55p2fhy40" path="res://assets/ProgressBar/earth.png" id="8_vmfvx"]
 [ext_resource type="Script" path="res://scripts/received_item_HUD.gd" id="9_fo2ts"]
 [ext_resource type="AudioStream" uid="uid://de10x5nq6xqcu" path="res://sounds/GameOver_joshuuu.ogg" id="13_8lpei"]
+[ext_resource type="Script" path="res://scripts/holder-water_bucket.gd" id="16_qohdx"]
+[ext_resource type="Texture2D" uid="uid://bn2a7t6qil5bj" path="res://assets/water_bucket/water_bucket.png" id="16_ti0eu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6ge5"]
 atlas = ExtResource("1_ma67k")
@@ -185,14 +187,19 @@ anchor_left = -2.564
 anchor_top = 2.29
 anchor_right = 2.682
 anchor_bottom = 7.013
-offset_left = 0.0200043
-offset_top = -712.19
-offset_right = -256.51
-offset_bottom = -992.077
+offset_left = 8.508
+offset_top = -700.19
+offset_right = -208.054
+offset_bottom = -2125.04
 scale = Vector2(9.01518, 7.08499)
 max_value = 60.0
 step = 0.5
 fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
 texture_under = ExtResource("6_gb1cy")
 texture_progress = ExtResource("7_jnawe")
 
@@ -260,3 +267,22 @@ text = "Lixo coletado 0/20"
 label_settings = SubResource("LabelSettings_egxhu")
 vertical_alignment = 1
 script = ExtResource("9_fo2ts")
+
+[node name="holder-water_bucket" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_left = -0.031
+anchor_top = -0.052
+anchor_right = 0.035
+anchor_bottom = 0.062
+offset_left = -0.287998
+offset_top = -0.304001
+offset_right = -0.32
+offset_bottom = -0.176003
+script = ExtResource("16_qohdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="holder-water_bucket"]
+position = Vector2(116, 158)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("16_ti0eu")
+hframes = 4

@@ -28,8 +28,7 @@ func show_message():
 	timer.start()
 
 func _on_timer_timeout():
-	if $textFX.playing:
-		$textFX.stop()
+	$textFX.stop()
 	$textFX.play()
 	if text.visible_characters == text.text.length():
 		$press_F.visible = true

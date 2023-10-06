@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ddiadu50osjii"]
+[gd_scene load_steps=40 format=3 uid="uid://ddiadu50osjii"]
 
 [ext_resource type="Script" path="res://scripts/world_2.gd" id="1_jrgb0"]
 [ext_resource type="Texture2D" uid="uid://c0dcw8pa0f1c8" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="2_ikkvk"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://jhefasc1wbd3" path="res://prefabs/invisible_checkpoint.tscn" id="19_5aeh1"]
 [ext_resource type="PackedScene" uid="uid://jacupcljubt3" path="res://prefabs/objective_popup.tscn" id="20_rqivj"]
 [ext_resource type="AudioStream" uid="uid://ds6e5v6lgxep5" path="res://music/Fightwave_Aila-Scott.ogg" id="21_ivx83"]
+[ext_resource type="Texture2D" uid="uid://bcf84rp8nlk7b" path="res://assets/burning_tree/burning_tree.png" id="22_8js1b"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ljgdp"]
 tile_data = PackedInt32Array(0, 262144, 1, 65536, 262144, 2, 131072, 262144, 2, 196608, 262144, 2, 262144, 262144, 2, 327680, 262144, 2, 393216, 262144, 2, 6, 262144, 1, 65542, 262144, 2, 131078, 262144, 2, 196614, 262144, 2, 262150, 262144, 2, 327686, 262144, 2, 393222, 262144, 2)
@@ -518,6 +519,42 @@ sources/6 = SubResource("TileSetAtlasSource_nsmxd")
 pattern_0 = SubResource("TileMapPattern_ljgdp")
 pattern_1 = SubResource("TileMapPattern_fdx1j")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cyx8"]
+atlas = ExtResource("22_8js1b")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1jj1"]
+atlas = ExtResource("22_8js1b")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwo0v"]
+atlas = ExtResource("22_8js1b")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nq5a"]
+atlas = ExtResource("22_8js1b")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcb2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cyx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1jj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwo0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nq5a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icyor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltwus"]
@@ -663,6 +700,40 @@ position = Vector2(7500, 575)
 
 [node name="Gas_cloud_enemy16" parent="Enemies" instance=ExtResource("3_t66e7")]
 position = Vector2(5842, 567)
+
+[node name="Burning_trees2" type="Node" parent="."]
+
+[node name="burning tree" type="AnimatedSprite2D" parent="Burning_trees2"]
+position = Vector2(7705, 529)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.91513
+
+[node name="burning tree2" type="AnimatedSprite2D" parent="Burning_trees2"]
+position = Vector2(7808, 529)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.892683
+
+[node name="burning tree3" type="AnimatedSprite2D" parent="Burning_trees2"]
+position = Vector2(7870, 528)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0980294
+
+[node name="burning tree4" type="AnimatedSprite2D" parent="Burning_trees2"]
+position = Vector2(7931, 528)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.699488
 
 [node name="Player" parent="." instance=ExtResource("3_ueu1a")]
 position = Vector2(41, 589)
@@ -1078,6 +1149,40 @@ shape = SubResource("RectangleShape2D_ltwus")
 stream = ExtResource("21_ivx83")
 volume_db = -10.0
 autoplay = true
+
+[node name="Burning_trees" type="Node" parent="."]
+
+[node name="burning tree" type="AnimatedSprite2D" parent="Burning_trees"]
+position = Vector2(7658, 528)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.186719
+
+[node name="burning tree2" type="AnimatedSprite2D" parent="Burning_trees"]
+position = Vector2(7752, 529)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.164241
+
+[node name="burning tree3" type="AnimatedSprite2D" parent="Burning_trees"]
+position = Vector2(7836, 528)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.369663
+
+[node name="burning tree4" type="AnimatedSprite2D" parent="Burning_trees"]
+position = Vector2(7900, 529)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lcb2c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.971102
 
 [connection signal="player_dead" from="Player" to="." method="_on_player_player_dead"]
 [connection signal="timeout" from="Reset_Timer" to="." method="_on_reset_timer_timeout"]

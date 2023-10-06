@@ -15,15 +15,25 @@ var knockback_vector = Vector2.ZERO
 @onready var animation := $animation as AnimatedSprite2D
 @onready var spawn_point = global_position
 @onready var remote_transform = $RemoteTransform2D as RemoteTransform2D
+@onready var broom_attack_collision = $"Broom-Attack/broom_attack_colision" as CollisionShape2D
 
-var bullet_scene = preload("res://prefabs/seed_projetile.tscn")  # Caminho para o Scene da bala
-var shoot_timer = 0.5  # Intervalo de disparo em segundos
+var bullet_water_scene = preload("res://prefabs/water_projetile.tscn")
+var bullet_seed_scene = preload("res://prefabs/seed_projetile.tscn")  # Caminho para o Scene da bala
+var shoot_timer = 0.5
+var attack_timer = 0.5  # Intervalo de disparo em segundos
 var can_shoot = false
+var can_melee_attack = true
 var direction
-
+var invunerable = false
+var invunerable_time = 0.2
 signal player_dead
 
 func _physics_process(delta):
+	if invunerable:
+		invunerable_time -= delta
+		if invunerable_time < 0:
+			invunerable = false
+			invunerable_time = 0.2
 	Global.player_health = player_life
 	# Add the gravity.
 	if not is_on_floor():
@@ -48,14 +58,21 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed('interact') and can_shoot:
 		shoot(animation.scale.x)
-		
+	
+	if Input.is_action_just_pressed('interact') and can_melee_attack and Global.level == 4 and !Global.player_is_holding_recycle_item:
+		melee_attack(animation.scale.x)	
 
-	if !can_shoot and get_parent().name == 'World2':
+	if !can_shoot and Global.level == 2 or Global.level == 3 :
 		shoot_timer -= delta
 		if shoot_timer <= 0:
 			can_shoot = true
 			shoot_timer = 0.7
-			
+	
+	if !can_melee_attack and Global.level == 4:
+		attack_timer -= delta
+		if attack_timer <= 0:
+			can_melee_attack = true
+			attack_timer = 0.3			
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
 	move_and_slide()
@@ -66,17 +83,38 @@ func _physics_process(delta):
 		player_dead.emit()
 
 func shoot(direction):
-	var bullet = bullet_scene.instantiate()  # Cria uma nova instância da bala
-	bullet.global_position = global_position + Vector2(10,-15)  # Define a posição inicial da bala
-	bullet.direction = Vector2(direction, 0)  # Define a direção da bala (ajuste conforme necessário)
-	get_parent().add_child(bullet)  # Adiciona a bala como um filho do nível
+	var bullet  # Cria uma nova instância da bala
+	if Global.level == 2:
+		bullet = bullet_seed_scene.instantiate()
+	elif Global.level == 3 and Global.player_is_holding_bucket_water:
+		bullet = bullet_water_scene.instantiate()
+	if bullet:
+		bullet.global_position = global_position + Vector2(10,-15)  # Define a posição inicial da bala
+		bullet.direction = Vector2(direction, 0)  # Define a direção da bala (ajuste conforme necessário)
+		get_parent().add_child(bullet)  # Adiciona a bala como um filho do nível
 
 	can_shoot = false  # Define a flag para impedir disparos frequentes
 	
 
+func melee_attack(direction):
+	$"Broom-Attack/texture".visible = true
+	if direction > 0:
+		$"Broom-Attack/texture".flip_h = false
+		$"Broom-Attack/texture".global_position.x = global_position.x + 24
+		broom_attack_collision.global_position.x = global_position.x + 30
+	elif direction < 0:
+		$"Broom-Attack/texture".flip_h = true
+		$"Broom-Attack/texture".global_position.x = global_position.x - 24
+		broom_attack_collision.global_position.x = global_position.x - 30
+	$"Broom-Attack/texture".play("default")
+	broom_attack_collision.disabled = false
+	await get_tree().create_timer(0.3).timeout
+	$"Broom-Attack/texture".visible = false
+	broom_attack_collision.disabled = true
+	can_melee_attack = false
 
 func _on_hurtbox_body_entered(body):
-	if body.is_in_group('enemies'):
+	if body.is_in_group('enemies') and !invunerable:
 		$hurtFX.play()
 		if player_life <= 0:
 			player_is_dead = true
@@ -94,6 +132,7 @@ func follow_camera(camera):
 
 func take_damage(knockback_force = Vector2.ZERO, duration = 0.25):
 	player_life -= 1
+	invunerable = true
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
 		var knockback_tween = get_tree().create_tween()

@@ -22,6 +22,7 @@ var player_health = 0
 var player_is_dead = false
 
 var player_is_holding_recycle_item = false
+var player_is_holding_bucket_water = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -14,3 +14,7 @@ func _process(delta):
 				text = "Lixo coletado: " + str(item_received) + "/20"
 		2:
 			text = "Árvores Plantadas: " + str(Global.planted_trees)
+		3:
+			text = "Derrote o elemental de fogo"
+		_:
+			text = ""

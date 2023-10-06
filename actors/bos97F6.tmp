@@ -311,14 +311,11 @@ volume_db = -5.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HP_BAR" type="TextureProgressBar" parent="CanvasLayer"]
-visible = false
 offset_left = 858.0
-offset_top = 568.0
+offset_top = 600.0
 offset_right = 898.0
-offset_bottom = 1168.0
+offset_bottom = 1200.0
 rotation = 1.5708
-value = 99.0
-fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_left = 15
 stretch_margin_top = 15

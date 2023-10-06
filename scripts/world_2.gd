@@ -44,4 +44,4 @@ func _on_level_finish_body_entered(body):
 	if body.name == "Player":
 		player.player_life = 3
 		Global.score_checkpoint = Global.score
-		TransitionScreen2.fade_in("res://prefabs/planted_tree.tscn")
+		TransitionScreen2.fade_in("res://levels/world_3.tscn")

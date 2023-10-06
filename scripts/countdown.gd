@@ -3,6 +3,7 @@ extends Label
 @export var countdown_time = 60
 var reset
 @onready var texture_progress_bar = $"../TextureProgressBar"
+@onready var holder_contagem_regressiva = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,10 @@ func _process(delta):
 	if(Global.timer != int(countdown_time)):
 		Global.timer = int(countdown_time)
 		update_display(Global.timer)
+	if Global.level == 3:
+		holder_contagem_regressiva.visible = false
+	else:
+		holder_contagem_regressiva.visible = true
 
 func update_display(time):
 	text = str(time)

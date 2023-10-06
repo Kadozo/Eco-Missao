@@ -1,11 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://fvjkbxmvxx4j"]
+[gd_scene load_steps=35 format=3 uid="uid://fvjkbxmvxx4j"]
 
 [ext_resource type="Script" path="res://scripts/world1.gd" id="1_bxpui"]
 [ext_resource type="Texture2D" uid="uid://xen06ho36utq" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="1_q1157"]
 [ext_resource type="Texture2D" uid="uid://c1sx3rjn78n8v" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/House (112 x 96).png" id="2_tk5s4"]
-[ext_resource type="Texture2D" uid="uid://du3hbixl10sb2" path="res://assets/Sidescroller Shooter - Central City/Assets/Tiles.png" id="3_w2qkb"]
 [ext_resource type="Texture2D" uid="uid://cadv1hpwguyh0" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="4_e3rjg"]
-[ext_resource type="Texture2D" uid="uid://u46y2wgduog0" path="res://assets/Sidescroller Shooter - Central City/Assets/Buildings.png" id="5_5rn0s"]
 [ext_resource type="Texture2D" uid="uid://b2vedbs02ykv5" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="6_6kcsv"]
 [ext_resource type="Texture2D" uid="uid://bk1cydel2ahqu" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="6_jn0ba"]
 [ext_resource type="Texture2D" uid="uid://bdhm45cx5qm8l" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Flowers (16 x 16).png" id="7_4dq6d"]
@@ -305,7 +303,6 @@ texture = ExtResource("2_tk5s4")
 2:0/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqdrx"]
-texture = ExtResource("3_w2qkb")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -626,7 +623,6 @@ texture = ExtResource("4_e3rjg")
 4:8/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51yyp"]
-texture = ExtResource("5_5rn0s")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0

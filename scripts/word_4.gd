@@ -1,15 +1,14 @@
-extends Control
+extends Node2D
 
+@onready var player = $Player
+@onready var camera = $camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	visible = false
-	pass # Replace with function body.
+	player.follow_camera(camera)
+	Global.level = 4
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.level == 2:
-		visible = true
-	else:
-		visible = false
+	pass

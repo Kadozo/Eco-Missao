@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ned0di6pms0"]
+
+[ext_resource type="Script" path="res://levels/contextualização_3_4.gd" id="1_cvlhb"]
+[ext_resource type="PackedScene" uid="uid://brqyonlckmj37" path="res://prefabs/dialogbox.tscn" id="2_ushq6"]
+
+[node name="Contextualização3_4" type="CanvasLayer"]
+script = ExtResource("1_cvlhb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogbox" parent="." instance=ExtResource("2_ushq6")]
+msg_queue = Array[String](["Assim como as florestas, o mar também desempenha um papel fundamental para o equilibrio do plataneta Terra", "As algas, assim como as árvores, também realizam o processo de fotossíntese, essencial para a vida no planeta", "porém, nossos mares estão altamente poluídos, o que dificulta a vida marinha, ocasionando num desiquilibrio no ecossistema", "Uma das ações que podemos tomar é evitar sujar as praias, para que o lixo não acabe indo para o mar..."])
