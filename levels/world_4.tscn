@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://djkfkqk7n41cc"]
+[gd_scene load_steps=23 format=3 uid="uid://djkfkqk7n41cc"]
 
 [ext_resource type="Script" path="res://scripts/word_4.gd" id="1_oe3nn"]
 [ext_resource type="Texture2D" uid="uid://dw2kn71xqmkm0" path="res://assets/Seasonal Tilesets/3 - Tropics/Terrain (16 x 16).png" id="2_hi8pf"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bpgc516ibgapk" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/3 - Floating_clouds.png" id="11_p16p3"]
 [ext_resource type="Texture2D" uid="uid://baeqrija18cqs" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="12_4hchv"]
 [ext_resource type="PackedScene" uid="uid://bq3u72632u0u8" path="res://prefabs/coin.tscn" id="13_1os78"]
+[ext_resource type="PackedScene" uid="uid://jhefasc1wbd3" path="res://prefabs/invisible_checkpoint.tscn" id="14_ee3l0"]
+[ext_resource type="PackedScene" uid="uid://cc0evj4tvwqu3" path="res://prefabs/reset_level_fall.tscn" id="15_han2e"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u2l1i"]
 tile_data = PackedInt32Array(0, 196608, 1, 65536, 196608, 2, 131072, 196608, 2, 196608, 196608, 2, 262144, 196608, 2, 327680, 196608, 2, 393216, 196608, 2, 458752, 196608, 2, 524288, 196608, 2, 1, 262144, 1, 65537, 262144, 2, 131073, 262144, 2, 196609, 262144, 2, 262145, 262144, 2, 327681, 262144, 2, 393217, 262144, 2, 458753, 262144, 2, 524289, 262144, 2, 2, 327680, 1, 65538, 327680, 2, 131074, 327680, 2, 196610, 327680, 2, 262146, 327680, 2, 327682, 327680, 2, 393218, 327680, 2, 458754, 327680, 2, 524290, 327680, 2)
@@ -589,7 +591,7 @@ centered = false
 zoom = Vector2(2.6, 2.5)
 limit_left = -15
 limit_top = -10000
-limit_right = 10000
+limit_right = 9800
 limit_bottom = 680
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
@@ -686,3 +688,20 @@ position = Vector2(5260, -564)
 
 [node name="coin30" parent="coins" instance=ExtResource("13_1os78")]
 position = Vector2(5281, -564)
+
+[node name="check_points" type="Node2D" parent="."]
+
+[node name="invisible_checkpoint" parent="check_points" instance=ExtResource("14_ee3l0")]
+position = Vector2(1549, 575)
+
+[node name="invisible_checkpoint2" parent="check_points" instance=ExtResource("14_ee3l0")]
+position = Vector2(3264, 574)
+
+[node name="invisible_checkpoint3" parent="check_points" instance=ExtResource("14_ee3l0")]
+position = Vector2(4190, 245)
+
+[node name="invisible_checkpoint4" parent="check_points" instance=ExtResource("14_ee3l0")]
+position = Vector2(7454, 465)
+
+[node name="reset_level_fall" parent="." instance=ExtResource("15_han2e")]
+position = Vector2(457, -229)
