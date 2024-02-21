@@ -49,10 +49,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -382.0
-offset_top = -324.0
+offset_left = -612.0
+offset_top = -285.0
 offset_right = -43.0
-offset_bottom = 176.0
+offset_bottom = 263.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 32
@@ -92,13 +92,34 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Controls_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Credits" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Créditos
+text = "Desenvolvimento do jogo: Thiago Cardozo
+
+Alguns sprites utilizados para o desenvolvimento se encontram no itch.io:
+
+Mini FX, Items & UI - @grafxkid
+Seasonal Tilesets - @grafxkid.
+
+As músicas foram retiradas também do ichio:
+
+Fight wave - @Aila Scott
+Fierce Fighting - @ryusuke0215
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="learn_more" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+modulate = Color(0.105469, 0.382813, 0.902344, 1)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.0392157, 0.203922, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_fyhfv")
+text = "Saiba mais sobre sustentabilidade"
+flat = true
+
 [node name="back_button" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_t7kxr")]
 layout_mode = 2
-path = "res://prefabs/menu.tscn"
+path = "res://levels/menu.tscn"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/learn_more" to="VBoxContainer/HBoxContainer/VBoxContainer/back_button" method="_on_learn_more_pressed"]

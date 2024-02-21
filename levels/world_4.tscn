@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://djkfkqk7n41cc"]
+[gd_scene load_steps=24 format=3 uid="uid://djkfkqk7n41cc"]
 
 [ext_resource type="Script" path="res://scripts/word_4.gd" id="1_oe3nn"]
 [ext_resource type="Texture2D" uid="uid://dw2kn71xqmkm0" path="res://assets/Seasonal Tilesets/3 - Tropics/Terrain (16 x 16).png" id="2_hi8pf"]
@@ -295,6 +295,9 @@ sources/3 = SubResource("TileSetAtlasSource_n5kjs")
 pattern_0 = SubResource("TileMapPattern_u2l1i")
 pattern_1 = SubResource("TileMapPattern_cuwh7")
 pattern_2 = SubResource("TileMapPattern_qvst1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckesh"]
+size = Vector2(68, 251)
 
 [node name="world_4" type="Node2D"]
 script = ExtResource("1_oe3nn")
@@ -705,3 +708,12 @@ position = Vector2(7454, 465)
 
 [node name="reset_level_fall" parent="." instance=ExtResource("15_han2e")]
 position = Vector2(457, -229)
+
+[node name="level_finish" type="Area2D" parent="."]
+position = Vector2(7942, 582)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_finish"]
+position = Vector2(1819, -98)
+shape = SubResource("RectangleShape2D_ckesh")
+
+[connection signal="body_entered" from="level_finish" to="." method="_on_level_finish_body_entered"]

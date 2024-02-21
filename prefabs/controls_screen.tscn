@@ -108,4 +108,4 @@ vertical_alignment = 1
 
 [node name="back_button" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_pbexc")]
 layout_mode = 2
-path = "res://prefabs/menu.tscn"
+path = "res://levels/menu.tscn"

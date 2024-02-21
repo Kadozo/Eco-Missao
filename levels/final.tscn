@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxxcnnwmswrpr"]
+
+[ext_resource type="Script" path="res://scripts/final.gd" id="1_4ke3c"]
+[ext_resource type="PackedScene" uid="uid://brqyonlckmj37" path="res://prefabs/dialogbox.tscn" id="1_8npih"]
+
+[node name="Final" type="CanvasLayer"]
+script = ExtResource("1_4ke3c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogbox" parent="." instance=ExtResource("1_8npih")]
+msg_queue = Array[String](["Com isso, chega ao fim sua missão. A Eco-missão! Você ajudou o planeta terra a ficar um pouco melhor, se cada um fizer sua parte. O impacto poderá ser cada vez maior, mas não pense que a responsabilidade termina aqui. continue praticando essas boas práticas com o meio ambiente para que o mundo possa se torna um lugar melhor hoje, e no futuro.", "Reciclagem do lixo, fazendo a utilização da coleta seletiva. Usar meios de transporte não-poluentes, como bicicletas, ou a utilização de transporte público, ajudam no crescimento de uma comunidade mais sustentável. ", "Racionalizar o consumo de energia e água, como o aproveitamento da água da chuva para regar as plantas ou fechar as torneiras quando não estiver utilizando são exemplos de práticas para evitar o consumo exagerado de água. Além de desligar aparelhos que não estão sendo usados para evitar o gasto de energia ou até mesmo abrir as janelas durante o dia para evitar ligar as luzes da casa. ", "E até mesmo, aprender um pouco mais sobre sustentabilidade para que você possa se conscientizar e conscientizar as pessoas que estão a sua volta. "])

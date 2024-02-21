@@ -12,3 +12,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+
+func _on_level_finish_body_entered(body):
+	if body.name == "Player":
+		player.player_life = 3
+		Global.score_checkpoint = Global.score
+		TransitionScreen2.fade_in("res://levels/final.tscn")

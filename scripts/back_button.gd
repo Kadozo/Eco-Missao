@@ -16,3 +16,7 @@ func _on_pressed():
 	$buttonFX.play()
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file(path) # Replace with function body.
+
+
+func _on_learn_more_pressed():
+	OS.shell_open("https://www.un.org/pt/actnow/ten-actions#plant-based-food")

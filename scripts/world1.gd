@@ -45,6 +45,7 @@ func _on_reset_timer_timeout():
 		$Reset_Timer.stop()
 		player.player_is_dead = false
 		Global.player_is_dead = false
+		Global.player_is_holding_recycle_item = false
 
 
 func _on_player_player_dead():
